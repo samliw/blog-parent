@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+
+<body>
+
+<div id="myDiv"><h2>通过 AJAX 改变文本</h2></div>
+<button id="b01" type="button">改变内容</button>
+<script src="https://www.jq22.com/jquery/jquery-1.9.1.js"></script>
+</body>
+</html>
+<script type="text/javascript">
+    $(document).ready(function(){
+        $("#b01").click(function(){
+
+            $.ajax({
+                url: "http://localhost:8899/getUser",
+                data: {name: 'jenny'},
+                type: "GET",
+                dataType: "json",
+                success: function(data) {
+                    $("#myDiv").html(data.res_data.username);
+                }
+            });
+        });
+    });
+</script>
