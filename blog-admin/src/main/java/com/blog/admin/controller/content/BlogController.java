@@ -8,6 +8,8 @@ import com.blog.common.response.ResponseInfo;
 import com.blog.component.entity.content.Blog;
 import com.blog.component.service.content.BlogService;
 import io.swagger.annotations.*;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,6 +17,9 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping(value = "/blog")
 @RestController
 public class BlogController {
+
+    private static final Logger logger = LoggerFactory.getLogger(BlogController.class);
+
     @Autowired
     private BlogService blogService;
     @Autowired
@@ -39,7 +44,7 @@ public class BlogController {
             @ApiImplicitParam(name="id",value="用户id",dataType="Integer", paramType = "query")}
             )
     public ResponseInfo test(@RequestParam Integer id, @RequestParam String name){
-        System.out.printf(name+id);
+        logger.info("测试数据： " + name+id);
         return new ResponseInfo(blogService.getAll());
     }
 
