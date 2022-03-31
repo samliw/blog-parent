@@ -1,0 +1,2 @@
+# blog-parent
+my bog
